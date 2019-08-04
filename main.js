@@ -9,15 +9,19 @@ async function run() {
     app.use(cors());
     let url = 'https://www.pensador.com/frases_de_bob_marley/';
     
-    const getRandomIndexFrom = (arr) => Math.floor(Math.random() * arr.length);
+    const clearText = (text) => text.replace(/<\/?[^>]+(>|$)/g, "");
+    const sortPhrase = (itemsList) => itemsList[Math.floor(Math.random() * itemsList.length)];
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(url);
 
     app.get('/', async (req, res) => {
         const frasesNode = await page.$$('.frase');
-        const frases = await (await frasesNode[getRandomIndexFrom(frasesNode)].getProperty('innerHTML')).jsonValue();
-        res.json(frases);
+        const sortedNode = sortPhrase(frasesNode);
+
+        const frase = await (await sortedNode.getProperty('innerHTML')).jsonValue();
+        res.json(clearText(frase));
     });
 
     app.listen(port, () => {
