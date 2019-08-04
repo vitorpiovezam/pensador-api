@@ -4,9 +4,10 @@ const bodyParser = require('body-parser');
 const puppeteer = require('puppeteer');
 
 async function run() {
+    const app = express();
+    
     app.use(cors());
 
-    const app = express();
     let url = 'https://www.pensador.com/frases_de_bob_marley/';
     
     const clearText = (text) => text.replace(/<\/?[^>]+(>|$)/g, "");
