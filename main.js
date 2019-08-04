@@ -5,7 +5,7 @@ const puppeteer = require('puppeteer');
 
 async function run() {
     const app = express();
-    
+    const port = process.env.PORT || 8080;
     app.use(cors());
 
     let url = 'https://www.pensador.com/frases_de_bob_marley/';
@@ -28,8 +28,8 @@ async function run() {
         res.json(clearText(frase));
     });
 
-    app.listen(process.env.PORT || 8080, () => {
-        console.log('🔥' + port);
+    app.listen(port, () => {
+        console.log('🔥 at :' + port);
     });
 };
 
