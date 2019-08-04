@@ -10,7 +10,7 @@ async function run() {
 
     let url = 'https://www.pensador.com/frases_de_bob_marley/';
     
-    const clearText = (text) => text.replace(/<\/?[^>]+(>|$)/g, "");
+    const clearText = (text) => text.replace(/<\/?[^>]+(>|$)/g, ' ').replace(/(\r\n|\n|\r)/gm, '');
     const sortPhrase = (itemsList) => itemsList[Math.floor(Math.random() * itemsList.length)];
 
     const browser = await puppeteer.launch({
