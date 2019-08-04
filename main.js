@@ -10,7 +10,10 @@ async function run() {
     let url = 'https://www.pensador.com/frases_de_bob_marley/';
     
     const getRandomIndexFrom = (arr) => Math.floor(Math.random() * arr.length);
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'] 
+    });
     const page = await browser.newPage();
     await page.goto(url);
 
