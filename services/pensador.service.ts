@@ -1,7 +1,5 @@
 import { Phrase } from '../entities/phrase.model';
-import * as puppeteer from 'puppeteer';
-import { Browser, Page } from 'puppeteer'
-import slugify from 'slugify';
+import { Browser, Page, ElementHandle } from 'puppeteer'
 
 export class PensadorService {
   private url: string = 'https://www.pensador.com';
@@ -11,13 +9,8 @@ export class PensadorService {
    * 
    * @param authorSlug - Must be slugified "carl-sagan"
    */
-  private async getAuthor(authorSlug: string): Promise<Page> {
-    const browser: Browser = await puppeteer.launch({
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-      ]
-    });
+  private async getAuthor(browser: Browser, authorSlug: string): Promise<Page> {
+   
 
     const page: Page = await browser.newPage();
     await page.goto(this.url);
@@ -41,9 +34,9 @@ export class PensadorService {
     return page;
   }
 
-  async returnRandomPhraseFrom(author: string): Promise<Phrase> {
-    const page: Page = await this.getAuthor(author);
-    const frasesNode: puppeteer.ElementHandle<Element>[] = await page.$$('.frase');
+  async returnRandomPhraseFrom(browser: Browser, author: string): Promise<Phrase> {
+    const page: Page = await this.getAuthor(browser, author);
+    const frasesNode: ElementHandle<Element>[] = await page.$$('.frase');
 
     let frases = [] as Phrase[];
 
