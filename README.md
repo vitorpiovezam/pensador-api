@@ -19,5 +19,5 @@ Hit a get with the artist name slugified, the response language may be different
 
 This demo is running public at heroku, first request may be longer, sleepy container 💤
 
-👉 <b>[get /bob-marley](https://pensador-api.herokuapp.com/)</b>
+👉 <b>[get /bob-marley](https://pensador-api.herokuapp.com/bob-marley)</b>
 <small></small>
