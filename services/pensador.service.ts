@@ -19,12 +19,11 @@ export class PensadorService {
     await searchBox.type(unsligifiedAuthorName);
     await page.click('button[type="submit"');
 
-    const pageAuthorNameElement = await page.$('h1');
-
     try {
+      const pageAuthorNameElement = await page.$('h1');
       const pageAuthorSlug: String = (await page.evaluate(element => element.textContent, pageAuthorNameElement)).replace(' ','-');
 
-      if(pageAuthorSlug.toLocaleLowerCase() !== authorSlug.toLowerCase()) {
+      if(!(pageAuthorSlug.toLocaleLowerCase() === authorSlug.toLowerCase())) {
         throw new Error('artist not founded');
       }
     } catch (err) {

@@ -38,8 +38,13 @@ async function run() {
   
   app.get('/:artist', async (req, res) => {
     const author: string = req.params.artist;
-    const phrase: Phrase = await new PensadorService().returnRandomPhraseFrom(browser, author);
-    res.send(phrase.text);
+    
+    try {
+      const phrase: Phrase = await new PensadorService().returnRandomPhraseFrom(browser, author);
+      res.send(phrase.text);
+    } catch(err) {
+      res.send('🕵 artist not founded')
+    }
   });
   
   app.listen(port, () => {
