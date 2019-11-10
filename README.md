@@ -12,7 +12,8 @@ Hit a get with the artist name slugified, the response language may be different
   Eu não quero acreditar, eu quero saber.
 
   $ curl localhost:8080/nikola_tesla
-  A ciência é, portanto, uma perversão de si mesma, a menos que tenha como fim último, melhorar a humanidade.
+  A ciência é, portanto, uma perversão de si mesma,
+  a menos que tenha como fim último, melhorar a humanidade.
 </pre>
 
 ### Test 🎉
