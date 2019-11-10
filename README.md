@@ -5,7 +5,7 @@ Returns a random phrase from some artist
 
 ## How to use
 
-Hit a get with the artist name slugified, the response language may be different
+Hit a get with the artist name slugified (```carl-sagan```, ```nikolas-tesla```)
 
 <pre>
   $ curl localhost:8080/carl-sagan
