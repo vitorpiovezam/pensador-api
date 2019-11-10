@@ -11,7 +11,18 @@ app.use(cors());
 app.use(bodyParser());
 
 app.get('', (req, res) => {
-  console.log('');
+  res.write(`
+  <html>
+  <style>
+    * {
+      font-family: arial;
+      font-size: 22px;
+    }
+  </style>
+  <meta charset="utf-8">
+    <b> 👉 <a href="https://github.com/vitorpiovezam/pensador-api"> repo</a></b>  
+  </html>
+  `);
 });
 
 app.get('/:artist', async (req, res) => {

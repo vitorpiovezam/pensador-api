@@ -12,7 +12,12 @@ export class PensadorService {
    * @param authorSlug - Must be slugified "carl-sagan"
    */
   private async getAuthor(authorSlug: string): Promise<Page> {
-    const browser: Browser = await puppeteer.launch();
+    const browser: Browser = await puppeteer.launch({
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+      ]
+    });
 
     const page: Page = await browser.newPage();
     await page.goto(this.url);
