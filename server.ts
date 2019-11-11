@@ -43,7 +43,7 @@ async function run() {
       const phrase: Phrase = await new PensadorService().returnRandomPhraseFrom(browser, author);
       res.send(phrase.text);
     } catch(err) {
-      res.send('🕵 artist not founded')
+      res.send('🕵 author ' + author.replace('-', ' ') + ' not founded')
     }
   });
   
