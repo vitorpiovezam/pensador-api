@@ -12,7 +12,7 @@ Hit a get with the artist name slugified (```carl-sagan```, ```nikolas-tesla```)
   Eu não quero acreditar, eu quero saber.
 </pre>
 
-### Test 🎉
+### Running demo
 
 This demo is running public at heroku, first request may be longer, sleepy container 💤
 
