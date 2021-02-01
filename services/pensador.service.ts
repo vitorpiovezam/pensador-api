@@ -10,8 +10,6 @@ export class PensadorService {
    * @param authorSlug - Must be slugified "carl-sagan"
    */
   private async getAuthor(browser: Browser, authorSlug: string): Promise<Page> {
-   
-
     const page: Page = await browser.newPage();
     await page.goto(this.url);
     const searchBox = await page.$('input[type="text"');
